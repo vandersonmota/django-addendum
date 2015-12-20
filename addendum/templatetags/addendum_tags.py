@@ -105,6 +105,6 @@ class SnippetNode(template.Node):
             return template.Template(snippet).render(context)
 
         if self.safe:
-            return mark_safe(snippet)
+            return mark_safe(template.Template(snippet).render(context))
 
         return conditional_escape(snippet)
